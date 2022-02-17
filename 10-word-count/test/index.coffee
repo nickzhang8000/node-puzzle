@@ -27,6 +27,11 @@ describe '10-word-count', ->
     expected = words: 1, lines: 1
     helper input, expected, done
 
+  it 'should count a single Camel word', (done) ->
+    input = 'sIngle'
+    expected = words: 2, lines: 1
+    helper input, expected, done
+
   it 'should count words in a phrase', (done) ->
     input = 'this is a basic test'
     expected = words: 5, lines: 1
@@ -37,6 +42,22 @@ describe '10-word-count', ->
     expected = words: 1, lines: 1
     helper input, expected, done
 
-  # !!!!!
-  # Make the above tests pass and add more tests!
-  # !!!!!
+  it 'should count multiple lines', (done) ->
+    input = 'this is first line \n this is second line'
+    expected = words: 8, lines: 2
+    helper input, expected, done
+
+  it 'should count complex situation', (done) ->
+    input = 'this is first line \n this is second line \n "this is third line"'
+    expected = words: 9, lines: 3
+    helper input, expected, done
+
+  it 'should count complex situation with doube quote', (done) ->
+    input = 'this is first line \n this is second line \n "this is third line" this is third line'
+    expected = words: 13, lines: 3
+    helper input, expected, done
+ 
+  it 'should count complex situation with doube quotea and camel word', (done) ->
+    input = 'this is fIrst line \n this is sEcond line \n "this is third line" this is tTird line'
+    expected = words: 16, lines: 3
+    helper input, expected, done

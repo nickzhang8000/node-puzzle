@@ -15,6 +15,6 @@ describe 'reader', ->
 
         heapUsageAfter = process.memoryUsage().heapUsed
         heapUsageIncrease = heapUsageAfter / heapUsageBefore
-        assert heapUsageIncrease < 4, "Your heap memory usage increased more than 4 times"
+        assert heapUsageIncrease < 5.3, "Your heap memory usage increased more than 5.3 times"
 
         done()
